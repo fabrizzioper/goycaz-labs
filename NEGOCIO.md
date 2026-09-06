@@ -24,7 +24,7 @@ sistemas funcionando y mantenerlos.
 
 | Persona | Rol | Contacto |
 |---|---|---|
-| Yago Caldas | CEO, fundador, técnico | +51 994 146 110 · yagocz0206@gmail.com |
+| Yago Caldas | CEO, fundador, técnico | +51 981 369 224 · yagocz0206@gmail.com |
 | Fabrizzio Pereira (`fabrizzioper`) | Socio · deploy e infraestructura | — |
 
 Instagram: [@goycaz.labs](https://instagram.com/goycaz.labs)

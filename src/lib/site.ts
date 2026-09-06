@@ -9,8 +9,8 @@ export function url(path = '/'): string {
 }
 
 // ── Contact details ─────────────────────────────────────────
-export const WHATSAPP = '51994146110';                 // sin +, sin espacios
-export const WHATSAPP_PRETTY = '+51 994 146 110';
+export const WHATSAPP = '51981369224';                 // sin +, sin espacios
+export const WHATSAPP_PRETTY = '+51 981 369 224';
 export const EMAIL = 'yagocz0206@gmail.com';
 export const INSTAGRAM = 'goycaz.labs';
 export const INSTAGRAM_URL = 'https://instagram.com/goycaz.labs';
