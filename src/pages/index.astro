@@ -1,166 +1,286 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { url } from '../lib/site';
-import { services, cases } from '../lib/content';
-const stack = ['Python · FastAPI', 'Flutter', 'RAG · MCP', 'Claude · Gemini', 'SQL Server · PostgreSQL', 'Docker · Kamal', 'AWS · Azure · On-prem', '.NET · Node'];
+import Marks from '../components/Marks.astro';
+import { url, WHATSAPP } from '../lib/site';
+import { services, showcase } from '../lib/content';
+import ShowcaseMock from '../components/ShowcaseMock.astro';
+import { icons } from '../lib/icons';
+const wa = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola GoyCaz Labs, quiero cotizar un proyecto')}`;
+const featured = services[0];
+const rest = services.slice(1, 7);
 ---
 <Layout active="">
   <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero-glow"></div>
-    <div class="wrap hero-grid">
-      <div>
-        <span class="status-pill"><span class="dot-live"></span><span data-en="System status: in production">Estado del sistema: en producción</span></span>
-        <h1><span data-en="Software &amp; AI that ">Software e IA que </span><span class="hl" data-en="actually ship to production.">sí llegan a producción.</span></h1>
-        <p class="lead" data-en="We build AI agents, apps and infrastructure for real companies — and we deploy them in your environment. Without breaking what already works, and without locking you in.">Construimos agentes de IA, aplicaciones e infraestructura para empresas de verdad — y los desplegamos en tu entorno. Sin romper lo que ya funciona y sin dejarte atado a nadie.</p>
-        <div class="hero-cta">
-          <a href={url('/contacto')} class="btn btn-primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            <span data-en="Start your project">Empecemos tu proyecto</span>
-          </a>
-          <a href={url('/servicios')} class="btn btn-ghost" data-en="See what we do">Ver qué hacemos</a>
-        </div>
-        <div class="hero-trust">
-          <span><span class="c">◆</span> <span data-en="AI in production for mining">IA en producción para minería</span></span>
-          <span><span class="c">◆</span> <span data-en="Peru · remote across LATAM &amp; the US">Perú · remoto en LATAM y EE.UU.</span></span>
-        </div>
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="aurora" data-aurora data-speed="0.4" data-blend="0.6" data-amplitude="1"></div>
+      <div class="fade"></div>
+    </div>
+    <div class="hero-inner stagger">
+      <span class="pill"><span class="dot"></span><span data-en="AI &amp; software studio · Peru">Estudio de IA y software · Perú</span></span>
+      <h1><span data-en="Software and AI that ">Software e IA que </span><span class="ac" data-en="actually">sí</span><span data-en=" ship to production."> llegan a producción.</span></h1>
+      <p class="lead" data-en="We build AI agents, apps and infrastructure for real companies — and we deploy them in your environment. Without breaking what already works, and without locking you in.">Construimos agentes de IA, aplicaciones e infraestructura para empresas de verdad — y los desplegamos en tu entorno. Sin romper lo que ya funciona y sin dejarte atado a nadie.</p>
+      <div class="hero-cta">
+        <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <span data-en="Get a quote on WhatsApp">Cotizar por WhatsApp</span>
+          <span set:html={icons.arrowRight}></span>
+        </a>
+        <a href={url('/casos')} class="btn btn-ghost" data-en="See work">Ver casos</a>
       </div>
-
-      <div class="terminal" aria-hidden="true">
-        <div class="term-bar"><i></i><i></i><i></i><span class="term-title">goycaz — deploy</span></div>
-        <div class="term-body" id="term">
-          <div class="l"><span class="p">$</span> goycaz deploy --prod</div>
-          <div class="l" data-en='<span class="mut">&rarr;</span> building <span class="path">app</span>&hellip; <span class="ok">&check;</span>'><span class="mut">&rarr;</span> construyendo <span class="path">app</span>&hellip; <span class="ok">&check;</span></div>
-          <div class="l" data-en='<span class="mut">&rarr;</span> connecting <span class="path">database</span>&hellip; <span class="ok">&check;</span>'><span class="mut">&rarr;</span> conectando <span class="path">base de datos</span>&hellip; <span class="ok">&check;</span></div>
-          <div class="l" data-en='<span class="mut">&rarr;</span> starting <span class="path">AI agent</span>&hellip; <span class="ok">&check;</span>'><span class="mut">&rarr;</span> iniciando <span class="path">agente de IA</span>&hellip; <span class="ok">&check;</span></div>
-          <div class="l" data-en='<span class="mut">&rarr;</span> access control by role&hellip; <span class="ok">&check;</span>'><span class="mut">&rarr;</span> control de acceso por rol&hellip; <span class="ok">&check;</span></div>
-          <div class="l"><span class="mut">&rarr;</span> health check&hellip; <span class="ok">&check;</span></div>
-          <div class="l">&nbsp;</div>
-          <div class="l" data-en='<span class="live">&#9679;</span> <span class="live">live in production</span> <span class="mut">&middot; 99.9% uptime &middot; no lock-in</span><span class="cursor"></span>'><span class="live">&#9679;</span> <span class="live">en vivo en producción</span> <span class="mut">&middot; 99.9% uptime &middot; sin lock-in</span><span class="cursor"></span></div>
-        </div>
-      </div>
+      <p class="hero-note" data-en="AI in production for mining, retail and industry">IA en producción para minería, retail e industria</p>
     </div>
   </section>
 
-  <!-- STRIP -->
-  <div class="strip">
-    <div class="wrap strip-inner">
-      <span class="label" data-en="Stack">Stack</span>
-      {stack.map((t) => <span class="tech">{t}</span>)}
-    </div>
-  </div>
-
-  <!-- SERVICES -->
-  <!-- PAIN -->
-  <section class="block alt" id="problemas">
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow"><span class="num">01</span><span class="bar"></span><span data-en="The problem">El problema</span></span>
-        <h2 data-en="Does this sound familiar?">¿Te suena familiar?</h2>
-      </div>
-      <div class="pain-grid">
-        <div class="pain reveal">
-          <h3 data-en="Messages answered hours later">Los mensajes se responden horas después</h3>
-          <p data-en="A client writes on a Saturday night. You reply on Monday. By then they already bought from someone else.">Un cliente escribe un sábado por la noche. Le contestas el lunes. Para entonces ya le compró a otro.</p>
-        </div>
-        <div class="pain reveal">
-          <h3 data-en="Missed calls nobody returns">Llamadas perdidas que nadie devuelve</h3>
-          <p data-en="You were busy and couldn't pick up. That call was a client ready to buy, and they never called back.">Estabas ocupado y no contestaste. Esa llamada era un cliente listo para comprar, y nunca volvió a llamar.</p>
-        </div>
-        <div class="pain reveal">
-          <h3 data-en="People who book and don't show">Clientes que agendan y no llegan</h3>
-          <p data-en="You blocked the slot, got everything ready, and nobody came. Nobody reminded them the day before.">Reservaste el horario, preparaste todo y no apareció nadie. Nadie le recordó su cita el día anterior.</p>
-        </div>
-        <div class="pain reveal">
-          <h3 data-en="Past clients who never come back">Clientes antiguos que nunca vuelven</h3>
-          <p data-en="They bought once, were happy, and forgot about you. They're in your phone and nobody has written to them.">Te compraron una vez, quedaron contentos y se olvidaron de ti. Están en tu celular y nadie les ha escrito.</p>
-        </div>
-      </div>
-      <p class="pain-close reveal" data-en="Each of those is money walking out the door this week.">Cada uno de esos es dinero que se te está yendo esta semana.</p>
-    </div>
-  </section>
-
-  <section class="block" id="servicios">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow"><span class="num">02</span><span class="bar"></span><span data-en="Services">Servicios</span></span>
-        <h2 data-en="Everything to modernize your business and put AI to work — from one team.">Todo para modernizar tu negocio y poner la IA a trabajar — de un solo equipo.</h2>
+      <div class="sec-head stagger">
+        <p class="label" data-en="Services">Servicios</p>
+        <h2><span data-en="What we build for your ">Lo que construimos para tu </span><span class="ac" data-en="business">negocio</span><span data-en=".">.</span></h2>
         <p class="lead" data-en="From a simple automation to a full AI platform over your data. We start with whatever gives you the most value today.">Desde una automatización simple hasta una plataforma de IA sobre tus datos. Empezamos con lo que más valor te da hoy.</p>
       </div>
-      <div class="grid-serv">
-        {services.map((s) => (
-          <a href={url('/servicios')} class="card reveal">
-            <div class="ic" set:html={s.icon}></div>
-            <h3 data-en={s.en}>{s.es}</h3>
-            <p data-en={s.descEn}>{s.descEs}</p>
-            <ul>{s.bulletsEs.map((b, i) => <li data-en={s.bulletsEn[i]}>{b}</li>)}</ul>
+
+      <div class="serv-stack">
+        <div class="marks reveal">
+          <Marks />
+          <a href={url('/servicios')} class="feat group">
+            <div class="feat-body">
+              <div class="feat-top">
+                <span class="ico" set:html={featured.icon}></span>
+                <span class="badge" data-en="Most requested">Más solicitado</span>
+              </div>
+              <h3 data-en={featured.en}>{featured.es}</h3>
+              <p data-en={featured.descEn}>{featured.descEs}</p>
+              <ul class="checks">
+                {featured.bulletsEs.map((b, i) => (
+                  <li><span set:html={icons.check}></span><span data-en={featured.bulletsEn[i]}>{b}</span></li>
+                ))}
+                <li><span set:html={icons.check}></span><span data-en="Live in 7–14 days">En vivo en 7–14 días</span></li>
+              </ul>
+              <span class="feat-link"><span data-en="See service">Ver servicio</span><span set:html={icons.arrowUpRight}></span></span>
+            </div>
+            <div class="feat-aside">
+              <div class="mock" aria-hidden="true">
+                <div class="mock-bar"><i></i><i></i><i></i><b></b></div>
+                <div class="mock-body">
+                  <div class="l"><span class="p">$</span> goycaz deploy --prod</div>
+                  <div class="l" data-en='<span class="dim">→</span> building app… <span class="ok">✓</span>'><span class="dim">→</span> construyendo app… <span class="ok">✓</span></div>
+                  <div class="l" data-en='<span class="dim">→</span> connecting database… <span class="ok">✓</span>'><span class="dim">→</span> conectando base de datos… <span class="ok">✓</span></div>
+                  <div class="l" data-en='<span class="dim">→</span> starting AI agent… <span class="ok">✓</span>'><span class="dim">→</span> iniciando agente de IA… <span class="ok">✓</span></div>
+                  <div class="l" data-en='<span class="dim">→</span> role-based access… <span class="ok">✓</span>'><span class="dim">→</span> control de acceso por rol… <span class="ok">✓</span></div>
+                  <div class="l"><span class="dim">→</span> health check… <span class="ok">✓</span></div>
+                  <div class="l" data-en='<span class="ok">●</span> <span class="p">live in production</span> <span class="dim">· 99.9% uptime · no lock-in</span><span class="cur"></span>'><span class="ok">●</span> <span class="p">en vivo en producción</span> <span class="dim">· 99.9% uptime · sin lock-in</span><span class="cur"></span></div>
+                </div>
+              </div>
+            </div>
           </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY -->
-  <section class="block alt">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow"><span class="num">03</span><span class="bar"></span><span data-en="Why GoyCaz">Por qué GoyCaz</span></span>
-        <h2 data-en="Lots of people build demos. We keep them running.">Muchos hacen demos. Nosotros las mantenemos corriendo.</h2>
-      </div>
-      <div class="why-grid">
-        <div class="pillar reveal"><span class="k" data-en="/ 01 real production">/ 01 producción real</span><h3 data-en="In production, not a demo">En producción, no en una demo</h3><p data-en="A slide is easy; a system that holds up with real users, real data and real load is another thing. That's exactly where we operate.">Una diapositiva es fácil; un sistema que aguanta con usuarios, datos y carga reales es otra cosa. Ahí es exactamente donde trabajamos.</p></div>
-        <div class="pillar reveal"><span class="k" data-en="/ 02 no lock-in">/ 02 sin lock-in</span><h3 data-en="Yours, with no strings">Tuyo, sin ataduras</h3><p data-en="It runs on your infrastructure and accounts, with documentation and open standards. If one day you leave, you take everything with you.">Corre en tu infraestructura y tus cuentas, con documentación y estándares abiertos. Si algún día te vas, te llevas todo contigo.</p></div>
-        <div class="pillar reveal"><span class="k" data-en="/ 03 don't break prod">/ 03 sin romper prod</span><h3 data-en="Without breaking what works">Sin romper lo que funciona</h3><p data-en="We integrate with your existing systems and migrate in phases. The business keeps running while we modernize underneath.">Nos integramos con tus sistemas actuales y migramos por fases. El negocio sigue operando mientras modernizamos por debajo.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASES teaser -->
-  <section class="block">
-    <div class="wrap">
-      <div class="sec-head reveal" style="display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;max-width:none">
-        <div>
-          <span class="eyebrow"><span class="num">04</span><span class="bar"></span><span data-en="Real work">Casos reales</span></span>
-          <h2 data-en="Work in production, not slideware.">Trabajo en producción, no diapositivas.</h2>
         </div>
-        <a href={url('/casos')} class="btn btn-ghost" data-en="See all work">Ver todos los casos</a>
+
+        <div class="marks reveal">
+          <Marks />
+          <div class="serv-grid">
+            {rest.map((s) => (
+              <a href={url('/servicios')} class="serv group">
+                <div class="serv-top"><span class="ico sm" set:html={s.icon}></span></div>
+                <div class="body">
+                  <h3 data-en={s.en}>{s.es}</h3>
+                  <p data-en={s.descEn}>{s.descEs}</p>
+                </div>
+                <span class="go"><span data-en="See service">Ver servicio</span><span set:html={icons.arrowUpRight}></span></span>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-      <div class="grid-case">
-        {cases.map((c) => (
-          <div class="case reveal">
-            <span class="tag" data-en={c.tagEn}>{c.tagEs}</span>
-            <h3 data-en={c.en}>{c.es}</h3>
-            <p data-en={c.resultEn}>{c.resultEs}</p>
-            <div class="result"><span class="big" data-en={c.metrics[0].big}>{c.metrics[0].big}</span><span class="cap" data-en={c.metrics[0].capEn}>{c.metrics[0].capEs}</span></div>
+    </div>
+  </section>
+
+  <!-- NUESTRO TRABAJO (showcase) -->
+  <section class="section" id="casos">
+    <div class="wrap">
+      <div class="sec-head row stagger">
+        <div>
+          <p class="label" data-en="Our work">Nuestro trabajo</p>
+          <h2><span data-en="Systems that are already ">Sistemas que ya están </span><span class="ac" data-en="running">corriendo</span><span data-en=".">.</span></h2>
+          <p class="lead" data-en="Real work we shipped. Each one built to measure for its business.">Trabajo real que entregamos. Cada uno construido a medida para su negocio.</p>
+        </div>
+        <a href={url('/casos')} class="btn btn-outline"><span data-en="See all work">Ver todos los casos</span><span set:html={icons.arrowUpRight}></span></a>
+      </div>
+    </div>
+    <div class="wrap marquee-wrap reveal">
+      <div class="marquee">
+        {[0, 1, 2].map((k) => (
+          <div class="track" aria-hidden={k > 0 ? 'true' : undefined}>
+            {showcase.map((p) => (
+              <div class="show-item">
+                <article class="show group">
+                  <div class={`frame ${p.frame}`}>
+                    <div class="browser">
+                      <div class="browser-bar">
+                        <span class="d r"></span><span class="d y"></span><span class="d g"></span>
+                        <span class="urlpill">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                          <span>{p.url}</span>
+                        </span>
+                      </div>
+                      <div class="browser-body">
+                        {p.image
+                          ? <img src={url(p.image)} alt={`${p.name} — vista`} loading="lazy" decoding="async" />
+                          : <div class={`ph ${p.placeholder}`}><ShowcaseMock type={p.mock} /></div>}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="show-meta">
+                    <p class="ind" data-en={p.industryEn}>{p.industryEs}</p>
+                    <h3><a href={p.href.startsWith('http') ? p.href : url(p.href)} target={p.href.startsWith('http') ? '_blank' : undefined} rel={p.href.startsWith('http') ? 'noopener noreferrer' : undefined} aria-label={`Ver ${p.name}`} tabindex={k > 0 ? -1 : undefined}>{p.name}<span set:html={icons.arrowUpRight}></span></a></h3>
+                    <p class="desc" data-en={p.descEn}>{p.descEs}</p>
+                  </div>
+                </article>
+              </div>
+            ))}
           </div>
         ))}
       </div>
+      <div class="fade-l" aria-hidden="true"></div>
+      <div class="fade-r" aria-hidden="true"></div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="block alt" id="proceso">
+  <!-- PROCESO -->
+  <section class="section" id="proceso">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow"><span class="num">05</span><span class="bar"></span><span data-en="How it works">Cómo funciona</span></span>
-        <h2 data-en="Three steps and your business starts answering on its own.">Tres pasos y tu negocio empieza a responder solo.</h2>
+      <div class="sec-head stagger">
+        <p class="label" data-en="Process">Proceso</p>
+        <h2><span data-en="How we ">Cómo </span><span class="ac" data-en="work">trabajamos</span><span data-en=" together."> juntos.</span></h2>
+        <p class="lead" data-en="A simple, transparent and fast process. No bureaucracy, no endless meetings.">Un proceso simple, transparente y rápido. Sin burocracia ni reuniones eternas.</p>
       </div>
-      <div class="steps-grid">
-        <div class="step reveal">
-          <span class="snum">1</span>
-          <h3 data-en="Free 10-minute diagnosis">Diagnóstico gratis de 10 minutos</h3>
-          <p data-en="We talk on WhatsApp or a video call. You tell us how you handle clients today. No cost, no commitment.">Conversamos por WhatsApp o videollamada. Nos cuentas cómo atiendes hoy a tus clientes. Sin costo y sin compromiso.</p>
+      <div class="marks reveal">
+        <Marks />
+        <ol class="steps">
+          <li class="step">
+            <span class="n">01</span>
+            <div><h3 data-en="Conversation">Conversación</h3><p data-en="We talk on WhatsApp or a video call. You tell us how you handle clients today. No cost, no commitment.">Conversamos por WhatsApp o videollamada. Nos cuentas cómo atiendes hoy a tus clientes. Sin costo y sin compromiso.</p></div>
+          </li>
+          <li class="step">
+            <span class="n">02</span>
+            <div><h3 data-en="Diagnosis">Diagnóstico</h3><p data-en="We show you, with your numbers, where you're losing money and what a fix would return per month.">Te mostramos, con tus números, dónde estás perdiendo plata y cuánto te devolvería la solución al mes.</p></div>
+          </li>
+          <li class="step">
+            <span class="n">03</span>
+            <div><h3 data-en="Build">Construcción</h3><p data-en="We develop and test it in your real environment — not an isolated demo. Fixed price agreed up front.">Lo desarrollamos y lo probamos en tu entorno real — no en una demo aislada. Precio fijo acordado desde el inicio.</p></div>
+          </li>
+          <li class="step">
+            <span class="n">04</span>
+            <div><h3 data-en="Production">Producción</h3><p data-en="We leave it running, documented, and maintain it month to month. You forget about the tech.">Lo dejamos corriendo, documentado, y lo mantenemos mes a mes. Tú te olvidas de la parte técnica.</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRECIOS -->
+  <section class="section" id="precios">
+    <div class="wrap">
+      <div class="sec-head stagger">
+        <p class="label" data-en="Pricing">Precios</p>
+        <h2><span data-en="Clear ">Inversión </span><span class="ac" data-en="investment">clara</span><span data-en=". No surprises.">. Sin sorpresas.</span></h2>
+        <p class="lead" data-en="We price by outcome, not by the hour. Reference ranges — your exact quote comes out of the discovery call.">Cobramos por resultado, no por hora. Rangos de referencia — tu cotización exacta sale del diagnóstico.</p>
+      </div>
+      <div class="plans stagger">
+        <div class="plan group">
+          <div class="plan-top"><span class="ico" set:html={icons.flag}></span></div>
+          <h3 data-en="Quick win">Victoria rápida</h3>
+          <div class="price"><span data-en="From US$ 500">Desde US$ 500</span></div>
+          <p class="pdesc" data-en="A WhatsApp agent or a modern website. Live in 7–14 days.">Un agente de WhatsApp o una web moderna. En vivo en 7–14 días.</p>
+          <ul>
+            <li><span set:html={icons.checkCircle}></span><span data-en="WhatsApp agent or landing / website">Agente de WhatsApp o landing / web</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Live in your channels">Puesto en vivo en tus canales</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Training so your team uses it">Capacitación para que tu equipo lo use</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Fixed price, agreed up front">Precio fijo, acordado desde el inicio</span></li>
+          </ul>
+          <div class="spacer"></div>
+          <a href={url('/contacto')} class="btn btn-outline btn-block" data-en="Start here">Empezar por aquí</a>
         </div>
-        <div class="step reveal">
-          <span class="snum">2</span>
-          <h3 data-en="We show you, with numbers, where you're losing money">Te mostramos con números dónde estás perdiendo plata</h3>
-          <p data-en="How many messages go unanswered, how many bookings fall through, and what that costs you per month. Your numbers, not theory.">Cuántos mensajes se quedan sin responder, cuántas citas se caen y cuánto vale eso al mes. Con tus números, no con teoría.</p>
+        <div class="plan feat-plan group">
+          <div class="glow" aria-hidden="true"></div>
+          <div class="plan-top"><span class="ico" set:html={icons.rocket}></span><span class="badge strong" data-en="Recommended">Recomendado</span></div>
+          <h3 data-en="Custom project">Proyecto a medida</h3>
+          <div class="price"><span data-en="From US$ 800">Desde US$ 800</span></div>
+          <p class="pdesc" data-en="App, web or automation with AI, integrated into your real systems.">App, web o automatización con IA, integrada a tus sistemas reales.</p>
+          <ul>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Everything in Quick win, plus:">Todo lo de Victoria rápida, y además:</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Integration with your systems">Integración con tus sistemas</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Deployed in production with monitoring">Desplegado en producción con monitoreo</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Documentation, no lock-in">Documentación, sin lock-in</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="1 month of support included">1 mes de soporte incluido</span></li>
+          </ul>
+          <div class="spacer"></div>
+          <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block" data-en="Get a quote">Cotizar</a>
         </div>
-        <div class="step reveal">
-          <span class="snum">3</span>
-          <h3 data-en="We install it and your business runs on its own">Instalamos todo y tu negocio responde solo</h3>
-          <p data-en="We leave it running and maintain it month to month. You keep serving your clients; the system does the rest.">Lo dejamos funcionando y lo mantenemos mes a mes. Tú sigues atendiendo a tus clientes; el sistema hace el resto.</p>
+        <div class="plan group">
+          <div class="plan-top"><span class="ico" set:html={icons.layers}></span></div>
+          <h3 data-en="AI + Data platform">Plataforma IA + Datos</h3>
+          <div class="price"><span data-en="From US$ 1,000">Desde US$ 1,000</span></div>
+          <p class="pdesc" data-en="&ldquo;Talk to your data&rdquo;, legacy modernization, on-prem AI.">“Habla con tus datos”, modernización de sistemas, IA on-premise.</p>
+          <ul>
+            <li><span set:html={icons.checkCircle}></span><span data-en="AI over your databases &amp; documents">IA sobre tus bases y documentos</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Legacy modernization in phases">Modernización de sistemas por fases</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Cloud or fully on-premise">En la nube o totalmente on-premise</span></li>
+            <li><span set:html={icons.checkCircle}></span><span data-en="Access control &amp; security">Control de acceso y seguridad</span></li>
+          </ul>
+          <div class="spacer"></div>
+          <a href={url('/contacto')} class="btn btn-outline btn-block" data-en="Talk to us">Hablemos</a>
+        </div>
+      </div>
+      <p class="price-note reveal" data-en="All plans include responsive design, production deployment and documentation. Ongoing maintenance from US$ 200/month.">Todos los planes incluyen diseño responsive, despliegue en producción y documentación. Mantenimiento continuo desde US$ 200/mes.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="faq-grid">
+        <div class="faq-side stagger">
+          <div class="sec-head">
+            <p class="label" data-en="FAQ">Preguntas frecuentes</p>
+            <h2><span data-en="What people ">Lo que más nos </span><span class="ac" data-en="ask us">preguntan</span><span data-en=" most.">.</span></h2>
+            <p class="lead" data-en="Another question? Write to us directly. We reply on WhatsApp in under an hour on business days.">Si tienes otra duda, escríbenos directo. Respondemos por WhatsApp en menos de una hora hábil.</p>
+          </div>
+          <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            <span set:html={icons.chat}></span>
+            <span data-en="Ask on WhatsApp">Pregunta por WhatsApp</span>
+            <span set:html={icons.arrowUpRight}></span>
+          </a>
+        </div>
+        <div class="marks reveal">
+          <Marks />
+          <div class="faq">
+            <details open>
+              <summary><span class="q" data-en="I have a small business. Is this for me?">Tengo un negocio pequeño. ¿Esto es para mí?</span><span class="pm"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></summary>
+              <p data-en="Yes. We start with a quick win — like a WhatsApp agent or a modern website — that pays for itself fast. You don't need a big budget or a tech team to begin.">Sí. Empezamos con una victoria rápida — como un agente de WhatsApp o una web moderna — que se paga sola rápido. No necesitas un gran presupuesto ni un equipo técnico para arrancar.</p>
+            </details>
+            <details>
+              <summary><span class="q" data-en="How long does a project take?">¿Cuánto demora un proyecto?</span><span class="pm"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></summary>
+              <p data-en="A quick win, 7–14 business days. A custom project, a few weeks depending on scope. A platform, we define the timeline in the discovery call — but we always ship something usable early, not at the very end.">Una victoria rápida, 7–14 días hábiles. Un proyecto a medida, unas semanas según el alcance. Una plataforma la definimos en el diagnóstico — pero siempre entregamos algo usable temprano, no recién al final.</p>
+            </details>
+            <details>
+              <summary><span class="q" data-en="Will you touch my current systems?">¿Van a tocar mis sistemas actuales?</span><span class="pm"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></summary>
+              <p data-en="Only what we agree on, and always in phases. We integrate with what you already have and test in your real environment before going live, so the business keeps running the whole time.">Solo lo que acordemos, y siempre por fases. Nos integramos con lo que ya tienes y probamos en tu entorno real antes de salir en vivo, así el negocio sigue operando todo el tiempo.</p>
+            </details>
+            <details>
+              <summary><span class="q" data-en="Do I get locked in to you?">¿Quedo atado a ustedes?</span><span class="pm"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></summary>
+              <p data-en="No. Everything runs on your infrastructure and accounts, with documentation and open standards. Maintenance is optional — if you ever want to leave or bring it in-house, you take everything with you.">No. Todo corre en tu infraestructura y tus cuentas, con documentación y estándares abiertos. El mantenimiento es opcional — si algún día quieres irte o llevarlo a tu equipo, te llevas todo contigo.</p>
+            </details>
+            <details>
+              <summary><span class="q" data-en="Is my data safe with AI?">¿Mis datos están seguros con IA?</span><span class="pm"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></summary>
+              <p data-en="Yes. We can run everything on your own server (on-prem), with access control by role and full traceability. Your data doesn't leave where you decide it should live.">Sí. Podemos correr todo en tu propio servidor (on-premise), con control de acceso por rol y trazabilidad completa. Tus datos no salen de donde tú decidas que vivan.</p>
+            </details>
+            <details>
+              <summary><span class="q" data-en="How do you charge?">¿Cómo cobran?</span><span class="pm"><svg viewBox="0 0 14 14"><line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></summary>
+              <p data-en="By outcome, with a fixed price agreed up front — no surprise hourly bills. Usually 50% to start and 50% on delivery; for larger projects we agree on milestones.">Por resultado, con un precio fijo acordado desde el inicio — sin facturas por hora que sorprenden. Normalmente 50% al inicio y 50% contra entrega; en proyectos grandes acordamos hitos.</p>
+            </details>
+          </div>
         </div>
       </div>
     </div>

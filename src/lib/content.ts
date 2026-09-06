@@ -140,3 +140,51 @@ export const cases: CaseStudy[] = [
     ],
   },
 ];
+
+// ── Showcase (sección "Nuestro trabajo" de la home) ────────────────────────
+// `image` es opcional: si existe (p. ej. /showcase/kiosco.webp en public/),
+// se muestra la captura real; si no, se dibuja un mock ilustrativo (`mock`).
+export interface ShowcaseItem {
+  name: string;
+  industryEs: string; industryEn: string;
+  url: string;                     // texto de la barra del navegador
+  descEs: string; descEn: string;
+  href: string;                    // a dónde lleva la tarjeta
+  image?: string;
+  frame: 'f-rose' | 'f-amber' | 'f-orange' | 'f-sky';
+  placeholder: 'g-violet' | 'g-sky' | 'g-orange' | 'g-rose';
+  mock: 'chat' | 'kiosk' | 'deploy' | 'web';
+}
+
+export const showcase: ShowcaseItem[] = [
+  {
+    name: 'Tía Vane',
+    industryEs: 'E-commerce · Termos', industryEn: 'E-commerce · Tumblers',
+    url: 'tiavane.pe',
+    descEs: 'Tienda online con catálogo, carrito y pago en cuotas.',
+    descEn: 'Online store with catalog, cart and installment payments.',
+    href: 'https://tiavane.pe/',
+    image: '/showcase/tiavane.jpg',
+    frame: 'f-orange', placeholder: 'g-rose', mock: 'web',
+  },
+  {
+    name: 'Invierte AI',
+    industryEs: 'IA · Finanzas', industryEn: 'AI · Finance',
+    url: 'chatbot.vanels.pe',
+    descEs: 'Analiza inversiones con IA: sube archivos y pregunta en lenguaje natural.',
+    descEn: 'Analyze investments with AI: upload files and ask in plain language.',
+    href: 'https://chatbot.vanels.pe',
+    image: '/showcase/vanels-chatbot.jpg',
+    frame: 'f-sky', placeholder: 'g-violet', mock: 'chat',
+  },
+  {
+    name: 'Alonso Barber Studio',
+    industryEs: 'Barbería · Reservas', industryEn: 'Barbershop · Bookings',
+    url: 'alonsobarberstudio.com',
+    descEs: 'Reserva de turnos en línea y contacto directo por WhatsApp.',
+    descEn: 'Online appointment booking and direct WhatsApp contact.',
+    href: 'https://alonsobarberstudio.com/',
+    image: '/showcase/alonsobarber.jpg',
+    frame: 'f-rose', placeholder: 'g-orange', mock: 'web',
+  },
+];

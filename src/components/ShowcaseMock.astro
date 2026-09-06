@@ -1,0 +1,52 @@
+---
+// Ilustración esquemática que se muestra dentro del "navegador" del showcase
+// cuando el proyecto no tiene captura real (ShowcaseItem.image).
+const { type = 'web' } = Astro.props;
+---
+<div class="mock-ui" aria-hidden="true">
+  {type === 'chat' && (
+    <div class="win">
+      <div class="bub"><span class="bar w75"></span><span class="bar w40"></span></div>
+      <div class="bub me"><span class="bar w60"></span></div>
+      <div class="bub"><span class="bar w75"></span><span class="bar w60"></span><span class="bar w25"></span></div>
+      <div class="input"></div>
+    </div>
+  )}
+  {type === 'kiosk' && (
+    <div class="win">
+      <div class="row"><span class="bar dk w25"></span><span class="bar w40" style="margin-left:auto"></span></div>
+      <div class="tiles">
+        <div class="tile"><i></i><span class="bar w75"></span><span class="bar w40"></span></div>
+        <div class="tile"><i></i><span class="bar w75"></span><span class="bar w40"></span></div>
+        <div class="tile"><i></i><span class="bar w75"></span><span class="bar w40"></span></div>
+        <div class="tile"><i></i><span class="bar w75"></span><span class="bar w40"></span></div>
+        <div class="tile"><i></i><span class="bar w75"></span><span class="bar w40"></span></div>
+        <div class="tile"><i></i><span class="bar w75"></span><span class="bar w40"></span></div>
+      </div>
+      <div class="btn-m" style="width:100%;height:16px"></div>
+    </div>
+  )}
+  {type === 'deploy' && (
+    <div class="term">
+      <div class="row"><span class="bar p w40"></span></div>
+      <div class="row"><i></i><span class="bar w60"></span></div>
+      <div class="row"><i></i><span class="bar w75"></span></div>
+      <div class="row"><i></i><span class="bar w40"></span></div>
+      <div class="row"><i></i><span class="bar w60"></span></div>
+      <div class="row"><span class="bar p w25"></span></div>
+    </div>
+  )}
+  {type === 'web' && (
+    <div class="win">
+      <div class="row"><span class="bar dk w25"></span><span class="bar w40" style="margin-left:auto"></span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:4% 0">
+        <span class="bar dk w75"></span><span class="bar w60"></span><span class="btn-m" style="margin-top:4px"></span>
+      </div>
+      <div class="tiles" style="flex:0 0 auto;min-height:34%">
+        <div class="tile"><i></i><span class="bar w75"></span></div>
+        <div class="tile"><i></i><span class="bar w75"></span></div>
+        <div class="tile"><i></i><span class="bar w75"></span></div>
+      </div>
+    </div>
+  )}
+</div>

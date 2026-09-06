@@ -1,15 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { url } from '../lib/site';
+import { icons } from '../lib/icons';
 ---
 <Layout title="404 — GoyCaz Labs" titleEn="404 — GoyCaz Labs" description="Página no encontrada.">
-  <section class="page-hero" style="padding-bottom:80px">
-    <div class="wrap">
-      <span class="eyebrow"><span class="bar"></span>Error 404</span>
-      <h1 data-en="This route isn't in production.">Esta ruta no está en producción.</h1>
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="aurora" data-aurora data-speed="0.4" data-blend="0.6" data-amplitude="1"></div>
+      <div class="fade"></div>
+    </div>
+    <div class="hero-inner stagger">
+      <span class="pill"><span class="mono">Error 404</span></span>
+      <h1><span data-en="This route isn't in ">Esta ruta no está en </span><span class="ac" data-en="production">producción</span><span data-en=".">.</span></h1>
       <p class="lead" data-en="The page you're looking for doesn't exist or was moved. Let's get you back on track.">La página que buscas no existe o fue movida. Te devolvemos al camino.</p>
-      <div class="hero-cta" style="margin-top:26px">
-        <a href={url('/')} class="btn btn-primary" data-en="Back home">Volver al inicio</a>
+      <div class="hero-cta">
+        <a href={url('/')} class="btn btn-primary"><span data-en="Back home">Volver al inicio</span><span set:html={icons.arrowRight}></span></a>
         <a href={url('/contacto')} class="btn btn-ghost" data-en="Contact us">Contáctanos</a>
       </div>
     </div>

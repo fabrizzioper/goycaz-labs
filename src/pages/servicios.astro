@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CtaBand from '../components/CtaBand.astro';
+import Marks from '../components/Marks.astro';
 import { services } from '../lib/content';
 ---
 <Layout
@@ -10,45 +11,55 @@ import { services } from '../lib/content';
   description="Agentes de IA, IA sobre tus datos, web, apps, infraestructura, modernización y automatización — desplegados en producción.">
 
   <section class="page-hero">
-    <div class="wrap">
-      <span class="eyebrow"><span class="bar"></span><span data-en="Services">Servicios</span></span>
-      <h1 data-en="One team for everything you need to modernize and use AI.">Un solo equipo para todo lo que necesitas para modernizarte y usar IA.</h1>
+    <div class="hero-bg" aria-hidden="true">
+      <div class="aurora" data-aurora data-speed="0.4" data-blend="0.6" data-amplitude="1"></div>
+      <div class="fade"></div>
+    </div>
+    <div class="wrap hero-inner stagger">
+      <p class="label" data-en="Services">Servicios</p>
+      <h1><span data-en="One team for everything you need to modernize and use ">Un solo equipo para modernizarte y usar </span><span class="ac">IA</span><span data-en=".">.</span></h1>
       <p class="lead" data-en="We don't sell you a tool — we solve a problem and leave it running in production. Reference prices below; your exact quote comes out of the discovery call.">No te vendemos una herramienta — resolvemos un problema y lo dejamos corriendo en producción. Precios de referencia abajo; tu cotización exacta sale del diagnóstico.</p>
     </div>
   </section>
 
-  <section class="block" style="padding-top:8px">
+  <section class="section no-line" style="padding-top:0">
     <div class="wrap">
-      <div class="serv-detail">
-        {services.map((s) => (
-          <div class="srow reveal">
-            <div class="ic" set:html={s.icon}></div>
-            <div>
-              <h3 data-en={s.en}>{s.es}</h3>
-              <p data-en={s.descEn}>{s.descEs}</p>
-              <div class="tags">
-                {s.bulletsEs.map((b, i) => <span data-en={s.bulletsEn[i]}>{b}</span>)}
+      <div class="marks reveal">
+        <Marks />
+        <div class="rows">
+          {services.map((s) => (
+            <div class="srow group">
+              <span class="ico" set:html={s.icon}></span>
+              <div>
+                <h3 data-en={s.en}>{s.es}</h3>
+                <p data-en={s.descEn}>{s.descEs}</p>
+                <div class="tags">
+                  {s.bulletsEs.map((b, i) => <span data-en={s.bulletsEn[i]}>{b}</span>)}
+                </div>
               </div>
+              <div class="price">{s.price}</div>
             </div>
-            <div class="price-tag">{s.price}</div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="block alt">
+  <section class="section" id="proceso">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow"><span class="num">→</span><span class="bar"></span><span data-en="How we work">Cómo trabajamos</span></span>
-        <h2 data-en="A clear pipeline, fixed pricing, no surprises.">Un pipeline claro, precio fijo y sin sorpresas.</h2>
+      <div class="sec-head stagger">
+        <p class="label" data-en="How we work">Cómo trabajamos</p>
+        <h2><span data-en="A clear pipeline, fixed pricing, ">Un pipeline claro, precio fijo y </span><span class="ac" data-en="no surprises">sin sorpresas</span><span data-en=".">.</span></h2>
+        <p class="lead" data-en="A simple, transparent and fast process. No bureaucracy, no endless meetings.">Un proceso simple, transparente y rápido. Sin burocracia ni reuniones eternas.</p>
       </div>
-      <div class="pipe">
-        <div class="step reveal"><div class="n" data-en="01 · Discovery">01 · Diagnóstico</div><h3 data-en="We understand your business">Entendemos tu negocio</h3><p data-en="We map your operation and find where AI or software brings the most value. Fast, no commitment.">Mapeamos tu operación y encontramos dónde la IA o el software dan más valor. Rápido y sin compromiso.</p></div>
-        <div class="step reveal"><div class="n" data-en="02 · Design">02 · Diseño</div><h3 data-en="We scope the solution">Definimos la solución</h3><p data-en="We agree on scope, the expected outcome and a fixed price. You know exactly what you get.">Acordamos alcance, el resultado esperado y un precio fijo. Sabes exactamente qué recibes.</p></div>
-        <div class="step reveal"><div class="n" data-en="03 · Build">03 · Construcción</div><h3 data-en="We build and test">Construimos y probamos</h3><p data-en="We develop it and test it in your real environment — not an isolated demo.">Lo desarrollamos y lo probamos en tu entorno real — no en una demo aislada.</p></div>
-        <div class="step reveal"><div class="n" data-en="04 · Production">04 · Producción</div><h3 data-en="We ship and maintain">Desplegamos y mantenemos</h3><p data-en="We leave it running in production, documented and supported so it doesn't go down.">Lo dejamos corriendo en producción, documentado y con soporte para que no se caiga.</p></div>
+      <div class="marks reveal">
+        <Marks />
+        <ol class="steps">
+          <li class="step"><span class="n">01</span><div><h3 data-en="Discovery">Diagnóstico</h3><p data-en="We map your operation and find where AI or software brings the most value. Fast, no commitment.">Mapeamos tu operación y encontramos dónde la IA o el software dan más valor. Rápido y sin compromiso.</p></div></li>
+          <li class="step"><span class="n">02</span><div><h3 data-en="Design">Diseño</h3><p data-en="We agree on scope, the expected outcome and a fixed price. You know exactly what you get.">Acordamos alcance, el resultado esperado y un precio fijo. Sabes exactamente qué recibes.</p></div></li>
+          <li class="step"><span class="n">03</span><div><h3 data-en="Build">Construcción</h3><p data-en="We develop it and test it in your real environment — not an isolated demo.">Lo desarrollamos y lo probamos en tu entorno real — no en una demo aislada.</p></div></li>
+          <li class="step"><span class="n">04</span><div><h3 data-en="Production">Producción</h3><p data-en="We leave it running in production, documented and supported so it doesn't go down.">Lo dejamos corriendo en producción, documentado y con soporte para que no se caiga.</p></div></li>
+        </ol>
       </div>
     </div>
   </section>
