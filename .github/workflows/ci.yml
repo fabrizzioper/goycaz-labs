@@ -8,30 +8,98 @@ on:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  # En main no se cancela: un push encima de otro cortaria el despliegue a medias.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 permissions:
   contents: read
 
-# El sitio se despliega en la maquina propia (Astro SSR bajo pm2, expuesto por
-# cloudflared), asi que GitHub no puede publicarlo: no alcanza ese host.
-# Este workflow solo verifica que el proyecto compile en limpio.
-# Para desplegar: `npm run deploy` en la maquina.
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      - name: Install dependencies
+      - name: Instalar dependencias
         run: npm ci
 
       - name: Build
         run: npm run build
+
+  deploy:
+    name: Deploy
+    needs: [build]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: [self-hosted, goycazlabs]
+
+    env:
+      # La Mac que sirve goycazlabs.com por el tunel de Cloudflare. Se despliega
+      # sobre este directorio y no sobre el workspace del runner, porque es la
+      # ruta que PM2 tiene registrada como cwd.
+      DEPLOY_DIR: /Users/devapple1.dominiotech/goycaz-labs
+      APP: goycazlabs-web
+      HEALTH_URL: http://127.0.0.1:8796/
+      # launchd arranca el runner con un PATH minimo: sin esto no hay node ni pm2.
+      PATH: /Users/devapple1.dominiotech/.nvm/versions/node/v22.22.3/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin
+      # El runner corre bajo launchd, sin acceso al llavero: git pediria usuario
+      # por teclado y falla. Se autentica con el token del run.
+      GITHUB_TOKEN: ${{ github.token }}
+      CI: 'true'
+
+    steps:
+      - name: Anotar el commit actual
+        run: echo "SHA_ANTERIOR=$(git -C "$DEPLOY_DIR" rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Traer main
+        run: |
+          set -euo pipefail
+          cd "$DEPLOY_DIR"
+          # El token va en la URL de este fetch y no queda en la config.
+          git fetch --prune "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" main
+          git reset --hard FETCH_HEAD
+          echo "Desplegando $(git rev-parse --short HEAD)"
+
+      - name: Dependencias y build
+        run: |
+          set -euo pipefail
+          cd "$DEPLOY_DIR"
+          npm ci
+          npm run build
+          # El adapter standalone deja aca el entrypoint que PM2 arranca.
+          [ -f dist/server/entry.mjs ] || { echo "dist/server/entry.mjs no se genero" >&2; exit 1; }
+
+      - name: Reiniciar PM2
+        run: |
+          set -euo pipefail
+          pm2 restart "$APP" --update-env
+          pm2 save --force
+
+      - name: Verificar salud
+        run: |
+          set -euo pipefail
+          for intento in $(seq 1 30); do
+            if curl -fsS --max-time 3 "$HEALTH_URL" >/dev/null 2>&1; then
+              echo "Sitio sano al intento $intento"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "El sitio no respondio tras 60s" >&2
+          pm2 logs "$APP" --lines 40 --nostream || true
+          exit 1
+
+      - name: Revertir si algo fallo
+        if: failure()
+        run: |
+          cd "$DEPLOY_DIR"
+          echo "Revirtiendo a ${SHA_ANTERIOR:0:8}"
+          git reset --hard "$SHA_ANTERIOR" || true
+          npm ci || true
+          npm run build || true
+          pm2 restart "$APP" --update-env || true
