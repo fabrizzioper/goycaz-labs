@@ -65,8 +65,8 @@ h2{font-size:clamp(28px,3.9vw,45px)}
 /* NAV */
 header.nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(16px) saturate(1.1);border-bottom:1px solid var(--border)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
-.logo{display:flex;align-items:center;gap:10px}
-.logo img{height:34px;width:auto;display:block}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo img{height:34px;width:auto;display:block;max-width:none}
 .logo .logo-dark{display:none}
 :root[data-theme="dark"] .logo .logo-light{display:none}
 :root[data-theme="dark"] .logo .logo-dark{display:block}
@@ -287,6 +287,7 @@ footer{border-top:1px solid var(--border);padding:56px 0 42px;background:var(--b
 
 @media(max-width:960px){
   .hero-grid{grid-template-columns:1fr;gap:44px}
+  .term-body{min-height:0}
   .grid-serv,.grid-serv.cols3{grid-template-columns:repeat(2,1fr)}
   .pipe{grid-template-columns:1fr 1fr}
   .grid-case{grid-template-columns:1fr}
@@ -343,3 +344,49 @@ footer{border-top:1px solid var(--border);padding:56px 0 42px;background:var(--b
   .step h3{min-height:2.6em}
   .wa-float span{display:inline}
 }
+
+/* ── Ajustes móvil (≤560px) ────────────────────────────────── */
+@media(max-width:560px){
+  /* Header: que quepa todo sin desbordar */
+  .nav-inner{gap:8px}
+  .logo img{height:26px}
+  .nav-cta{gap:6px;min-width:0}
+  .nav-cta .btn{padding:9px 12px;font-size:13.5px;white-space:nowrap}
+  .nav-cta .btn-primary{display:none}
+  .lang{transform:scale(.9)}
+
+  /* Hero: títulos y botones a ancho completo */
+  .hero{padding-top:34px}
+  .hero h1{font-size:clamp(30px,8.4vw,40px);margin-bottom:18px}
+  .hero .btns{flex-direction:column;align-items:stretch;gap:10px}
+  .hero .btns .btn{width:100%;justify-content:center}
+  .page-hero h1{font-size:clamp(27px,7.6vw,36px)}
+
+  /* Terminal: sin el hueco enorme */
+  .term-body{min-height:0;padding:15px 15px 17px;font-size:11.4px;line-height:1.8}
+  .term-bar{padding:10px 13px}
+
+  /* Secciones de venta */
+  .pain{padding:17px 18px}
+  .pain h3{font-size:16px}
+  .pain-close{font-size:17px;padding:18px 20px;margin-top:20px}
+  .steps-grid{gap:22px}
+  .step .snum{width:40px;height:40px;font-size:17px;margin-bottom:11px}
+
+  /* Precios y CTA */
+  .grid-price{max-width:none}
+  .plan{padding:24px 20px}
+  .cta-single .btns{flex-direction:column;align-items:stretch}
+  .cta-single .btns .btn{width:100%;justify-content:center}
+
+  /* WhatsApp flotante más compacto */
+  .wa-float{right:13px;bottom:13px;padding:13px;gap:0}
+  .wa-float span{display:none}
+
+  /* Nada se desborda horizontalmente */
+  .wrap{padding-left:18px;padding-right:18px}
+}
+
+/* Cinturón de seguridad: ningún elemento fuerza scroll lateral */
+html,body{max-width:100%;overflow-x:hidden}
+img,svg,pre,table{max-width:100%}
