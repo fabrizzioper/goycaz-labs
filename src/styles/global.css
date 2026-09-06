@@ -70,7 +70,9 @@ body{
   margin:0;background:var(--background);color:var(--foreground);
   font-family:var(--font-sans);font-size:16px;line-height:1.5;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-  overflow-x:hidden;
+  /* 'clip' y no 'hidden': hidden convierte al body en contenedor de scroll y
+     rompe el IntersectionObserver que dispara las animaciones de entrada. */
+  overflow-x:clip;
 }
 a{color:inherit;text-decoration:none}
 img,svg,video,canvas{display:block;max-width:100%}
@@ -264,7 +266,7 @@ body.locked{overflow:hidden}
   margin:0 auto;display:flex;flex-direction:column;align-items:center;width:100%;max-width:768px;
   padding:96px 16px 80px;text-align:center;
 }
-.hero h1{margin-top:32px;font-size:36px;line-height:1.05;font-weight:500;letter-spacing:-.025em;text-wrap:balance}
+.hero h1{margin-top:32px;font-size:clamp(27px,8.2vw,36px);line-height:1.08;font-weight:500;letter-spacing:-.025em;text-wrap:balance;overflow-wrap:break-word}
 .hero .lead{margin-top:24px;max-width:576px;font-size:16px;line-height:1.625;color:var(--muted-foreground);text-wrap:balance}
 .hero-cta{margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:12px}
 .hero-note{margin-top:40px;font-size:12px;color:rgb(var(--mutedfg-rgb)/.8)}
@@ -583,6 +585,10 @@ body.locked{overflow:hidden}
 
 /* ── Reveal: estado inicial; la animación la hace `motion` (src/scripts/reveal.ts) ── */
 .js .reveal,.js .stagger > *{opacity:0}
+/* Salvavidas: si el JS de la animación falla, el contenido aparece igual a los 4s.
+   reveal.ts lo resuelve antes (a los 3s); esto cubre el caso de que ni siquiera cargue. */
+@keyframes reveal-fallback{to{opacity:1}}
+.js .reveal,.js .stagger > *{animation:reveal-fallback .4s ease 4s forwards}
 
 /* =========================================================================
    Breakpoints (Tailwind: sm 640 · md 768 · lg 1024)
@@ -702,3 +708,14 @@ body.locked{overflow:hidden}
   .js .reveal,.js .stagger > *{opacity:1}
   .marquee .track{animation:none}
 }
+
+/* ── Contención horizontal ─────────────────────────────────────────────
+   El marquee (.track con flex-shrink:0) y los fondos absolutos del hero
+   son más anchos que la pantalla por diseño. Sin esto, en móvil empujan
+   el layout y el contenido queda cortado por la derecha. */
+/* overflow-x:clip en <html> (no en body, y no 'hidden'): 'hidden' crea un
+   contexto de scroll que rompe el IntersectionObserver de las animaciones. */
+html{overflow-x:clip}
+body{max-width:100%}
+main,section,header,footer{max-width:100%}
+.marquee{max-width:100%}
