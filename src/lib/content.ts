@@ -26,7 +26,7 @@ export const services: Service[] = [
     descEn: '“Talk to your data”: ask in plain language and get answers from your databases and documents in seconds.',
     bulletsEs: ['RAG sobre tus documentos y BD', 'Control de acceso por rol', 'En la nube o en tu servidor'],
     bulletsEn: ['RAG over your docs & databases', 'Access control by role', 'Cloud or on your own server'],
-    price: 'desde US$ 1,000',
+    price: 'desde US$ 500',
   },
   {
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.5 3.5 6 3.5 9s-1.1 6.5-3.5 9c-2.4-2.5-3.5-6-3.5-9s1.1-6.5 3.5-9z"/></svg>',
@@ -35,7 +35,7 @@ export const services: Service[] = [
     descEn: 'Modern, fast, custom websites and platforms: landing pages, e-commerce, portals and dashboards.',
     bulletsEs: ['Diseño moderno y responsive', 'E-commerce y pagos (Yape, tarjeta)', 'Paneles y portales a medida'],
     bulletsEn: ['Modern, responsive design', 'E-commerce & payments (Yape, card)', 'Custom dashboards & portals'],
-    price: 'desde US$ 800',
+    price: 'desde US$ 500',
   },
   {
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>',
@@ -44,7 +44,7 @@ export const services: Service[] = [
     descEn: 'Android and iOS apps with Flutter — even with hardware: printing, payments and self-service kiosks.',
     bulletsEs: ['Una base para Android e iOS', 'Integración con hardware y pagos', 'Kioscos y puntos de venta'],
     bulletsEn: ['One codebase, Android & iOS', 'Hardware & payment integration', 'Kiosks & points of sale'],
-    price: 'desde US$ 1,200',
+    price: 'desde US$ 500',
   },
   {
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>',
@@ -71,7 +71,7 @@ export const services: Service[] = [
     descEn: 'We connect your systems and automate manual work — invoicing, back-office and reports — with AI.',
     bulletsEs: ['Integración entre tus sistemas', 'Facturación y reportes automáticos', 'Ahorro de horas medible'],
     bulletsEn: ['Integration across your systems', 'Automated invoicing & reports', 'Measurable hours saved'],
-    price: 'desde US$ 400',
+    price: 'desde US$ 500',
   },
   {
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>',
@@ -80,7 +80,7 @@ export const services: Service[] = [
     descEn: 'Monthly plans: we maintain, update and respond when something breaks. You stop worrying about it.',
     bulletsEs: ['Actualizaciones y mejoras', 'Respuesta a incidentes con SLA', 'Reportes mensuales'],
     bulletsEn: ['Updates & improvements', 'Incident response with SLA', 'Monthly reports'],
-    price: 'US$ 200–500/mes',
+    price: 'a medida',
   },
 ];
 
