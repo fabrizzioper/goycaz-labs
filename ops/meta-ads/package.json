@@ -1,0 +1,10 @@
+{
+  "name": "goycaz-meta-ads",
+  "private": true,
+  "type": "module",
+  "description": "CLI para operar los anuncios de GoyCaz Labs en Meta. Sin dependencias.",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "ads": "node ads.mjs"
+  }
+}

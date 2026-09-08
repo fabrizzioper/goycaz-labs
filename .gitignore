@@ -5,3 +5,8 @@ dist/
 npm-debug.log*
 
 .vercel
+
+# Credenciales de Meta Ads (nunca al repo)
+.env
+ops/meta-ads/.env
+ops/meta-ads/.ids.json
