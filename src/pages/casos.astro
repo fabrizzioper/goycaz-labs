@@ -2,7 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Marks from '../components/Marks.astro';
-import { cases, liveSites } from '../lib/content';
+import { url } from '../lib/site';
+import { cases, showcase } from '../lib/content';
+import ShowcaseMock from '../components/ShowcaseMock.astro';
 ---
 <Layout
   active="/casos"
@@ -30,16 +32,18 @@ import { cases, liveSites } from '../lib/content';
         <h2 data-en="Open them. They are in production right now.">Ábrelos. Están en producción ahora mismo.</h2>
       </div>
       <div class="site-grid stagger">
-        {liveSites.map((s, i) => (
-          <a class="site-card" href={s.url} target="_blank" rel="noopener">
+        {showcase.map((s, i) => (
+          <a class="site-card" href={s.href} target="_blank" rel="noopener">
             <div class="site-shot">
-              <img src={s.shot} alt={s.name} width="960" height="600" loading={i < 2 ? "eager" : "lazy"} decoding="async" />
+              {s.image
+                ? <img src={url(s.image)} alt={s.name} width="960" height="600" loading={i < 2 ? "eager" : "lazy"} decoding="async" />
+                : <div class={`ph ${s.placeholder}`}><ShowcaseMock type={s.mock} /></div>}
             </div>
             <div class="site-body">
-              <span class="badge" data-en={s.tagEn}>{s.tagEs}</span>
+              <span class="badge" data-en={s.industryEn}>{s.industryEs}</span>
               <h3>{s.name}</h3>
               <p data-en={s.descEn}>{s.descEs}</p>
-              <div class="site-stack">{s.stack.map((t) => <span>{t}</span>)}</div>
+              {s.stack && <div class="site-stack">{s.stack.map((t) => <span>{t}</span>)}</div>}
               <span class="site-link" data-en="Visit the site">Visitar el sitio</span>
             </div>
           </a>

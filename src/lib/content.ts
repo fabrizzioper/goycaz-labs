@@ -93,55 +93,6 @@ export const services: Service[] = [
   },
 ];
 
-/** Sitios en producción que el prospecto puede abrir y comprobar ahora mismo. */
-export interface LiveSite {
-  name: string;
-  url: string;
-  shot: string;              // captura en /public/casos
-  tagEs: string; tagEn: string;
-  descEs: string; descEn: string;
-  stack: string[];
-}
-
-export const liveSites: LiveSite[] = [
-  {
-    name: 'TwentyFour Digital',
-    url: 'https://twentyfourdigital.store/',
-    shot: '/casos/twentyfour.jpg',
-    tagEs: 'E-commerce · Suscripciones', tagEn: 'E-commerce · Subscriptions',
-    descEs: 'Tienda de suscripciones a streaming y software: catálogo con buscador, precios en soles, portal de clientes y panel de administración.',
-    descEn: 'Streaming and software subscription store: searchable catalog, local pricing, customer portal and admin panel.',
-    stack: ['React', 'TypeScript', 'PHP', 'SQL Server', 'Azure'],
-  },
-  {
-    name: 'General Supplier',
-    url: 'https://general-supplier.com/',
-    shot: '/casos/general-supplier.jpg',
-    tagEs: 'Industrial · Catálogo', tagEn: 'Industrial · Catalog',
-    descEs: 'Sitio corporativo multilingüe para un distribuidor de sellado mecánico, con catálogo técnico de productos.',
-    descEn: 'Multilingual corporate site for a mechanical sealing distributor, with a technical product catalog.',
-    stack: ['Astro', 'Multilingüe', 'SEO'],
-  },
-  {
-    name: 'Yacumama Eco Lodge',
-    url: 'https://yacumamaecolodge.com/',
-    shot: '/casos/yacumama.jpg',
-    tagEs: 'Turismo · Reservas', tagEn: 'Tourism · Bookings',
-    descEs: 'Web de un eco lodge amazónico: paquetes, galería y contacto directo para reservar.',
-    descEn: 'Website for an Amazon eco lodge: packages, gallery and direct contact to book.',
-    stack: ['Web', 'Responsive', 'SEO'],
-  },
-  {
-    name: 'Card Centro Perú',
-    url: 'https://cardcentroperu.com/',
-    shot: '/casos/cardcentro.jpg',
-    tagEs: 'Salud · Servicios', tagEn: 'Health · Services',
-    descEs: 'Sitio institucional de un centro de salud cardiológica, con servicios y canal de contacto.',
-    descEn: 'Institutional site for a cardiology health center, with services and a contact channel.',
-    stack: ['Web', 'Responsive', 'Formularios'],
-  },
-];
-
 export interface CaseStudy {
   tagEs: string; tagEn: string;
   es: string; en: string;
@@ -212,6 +163,7 @@ export interface ShowcaseItem {
   frame: 'f-rose' | 'f-amber' | 'f-orange' | 'f-sky';
   placeholder: 'g-violet' | 'g-sky' | 'g-orange' | 'g-rose';
   mock: 'chat' | 'kiosk' | 'deploy' | 'web';
+  stack?: string[];                // se muestra en /casos
 }
 
 export const showcase: ShowcaseItem[] = [
@@ -224,6 +176,7 @@ export const showcase: ShowcaseItem[] = [
     href: 'https://tiavane.pe/',
     image: '/showcase/tiavane.jpg',
     frame: 'f-orange', placeholder: 'g-rose', mock: 'web',
+    stack: ['E-commerce', 'Carrito', 'Pagos en cuotas'],
   },
   {
     name: 'Invierte AI',
@@ -234,6 +187,7 @@ export const showcase: ShowcaseItem[] = [
     href: 'https://chatbot.vanels.pe',
     image: '/showcase/vanels-chatbot.jpg',
     frame: 'f-sky', placeholder: 'g-violet', mock: 'chat',
+    stack: ['IA', 'RAG', 'Carga de archivos'],
   },
   {
     name: 'Alonso Barber Studio',
@@ -244,5 +198,50 @@ export const showcase: ShowcaseItem[] = [
     href: 'https://alonsobarberstudio.com/',
     image: '/showcase/alonsobarber.jpg',
     frame: 'f-rose', placeholder: 'g-orange', mock: 'web',
+    stack: ['Reservas online', 'WhatsApp', 'Responsive'],
+  },
+  {
+    name: 'TwentyFour Digital',
+    industryEs: 'E-commerce · Suscripciones', industryEn: 'E-commerce · Subscriptions',
+    url: 'twentyfourdigital.store',
+    descEs: 'Tienda de suscripciones a streaming y software, con buscador y panel de administración.',
+    descEn: 'Streaming and software subscription store, with search and an admin panel.',
+    href: 'https://twentyfourdigital.store/',
+    image: '/showcase/twentyfour.jpg',
+    frame: 'f-sky', placeholder: 'g-violet', mock: 'web',
+    stack: ['React', 'TypeScript', 'PHP', 'SQL Server', 'Azure'],
+  },
+  {
+    name: 'General Supplier',
+    industryEs: 'Industrial · Catálogo', industryEn: 'Industrial · Catalog',
+    url: 'general-supplier.com',
+    descEs: 'Sitio corporativo multilingüe con catálogo técnico de sellado industrial.',
+    descEn: 'Multilingual corporate site with a technical industrial sealing catalog.',
+    href: 'https://general-supplier.com/',
+    image: '/showcase/general-supplier.jpg',
+    frame: 'f-amber', placeholder: 'g-orange', mock: 'web',
+    stack: ['Astro', 'Multilingüe', 'SEO'],
+  },
+  {
+    name: 'Yacumama Eco Lodge',
+    industryEs: 'Turismo · Reservas', industryEn: 'Tourism · Bookings',
+    url: 'yacumamaecolodge.com',
+    descEs: 'Web de un eco lodge amazónico: paquetes, galería y contacto para reservar.',
+    descEn: 'Website for an Amazon eco lodge: packages, gallery and contact to book.',
+    href: 'https://yacumamaecolodge.com/',
+    image: '/showcase/yacumama.jpg',
+    frame: 'f-orange', placeholder: 'g-rose', mock: 'web',
+    stack: ['Web', 'Responsive', 'SEO'],
+  },
+  {
+    name: 'Card Centro Perú',
+    industryEs: 'Salud · Servicios', industryEn: 'Health · Services',
+    url: 'cardcentroperu.com',
+    descEs: 'Sitio institucional de un centro de salud cardiológica, con servicios y contacto.',
+    descEn: 'Institutional site for a cardiology health center, with services and contact.',
+    href: 'https://cardcentroperu.com/',
+    image: '/showcase/cardcentro.jpg',
+    frame: 'f-rose', placeholder: 'g-sky', mock: 'web',
+    stack: ['Web', 'Responsive', 'Formularios'],
   },
 ];
