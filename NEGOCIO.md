@@ -124,25 +124,28 @@ gigante: soy yo, trabajando directo contigo."* Ese contraste es lo que vende.
 
 ## 4b. Portafolio: qué mostramos
 
-`/casos` tiene dos bloques, y la diferencia importa al vender.
-
-**Sitios en vivo** — cuatro webs en producción que el cliente puede abrir
-ahora mismo desde su celular, con captura, descripción y stack:
+Los mismos **siete sitios** aparecen en la home (carrusel) y en `/casos`
+(grilla). Salen de una sola lista en el código, así que las dos páginas
+nunca se desincronizan. Todos son webs que el cliente puede abrir desde su
+celular en la reunión:
 
 | Sitio | Rubro |
 |---|---|
-| [TwentyFour Digital](https://twentyfourdigital.store/) | Suscripciones a streaming y software |
+| [Tía Vane](https://tiavane.pe/) | E-commerce · termos |
+| [Invierte AI](https://chatbot.vanels.pe) | IA · finanzas |
+| [Alonso Barber Studio](https://alonsobarberstudio.com/) | Barbería · reservas |
+| [TwentyFour Digital](https://twentyfourdigital.store/) | Suscripciones streaming y software |
 | [General Supplier](https://general-supplier.com/) | Industrial · catálogo técnico |
 | [Yacumama Eco Lodge](https://yacumamaecolodge.com/) | Turismo · reservas |
 | [Card Centro Perú](https://cardcentroperu.com/) | Salud · servicios |
 
-**Casos a detalle** — minería, retail y DevOps. Son los proyectos más
-grandes, pero por confidencialidad no se muestran pantallas: va el problema,
-qué hicimos y el resultado. La página lo dice explícitamente, para que no
-parezca que se esconde algo.
+En `/casos`, debajo de esos siete, van los **casos a detalle**: minería,
+retail y DevOps. Son los proyectos más grandes, pero por confidencialidad
+no se muestran pantallas — va el problema, qué hicimos y el resultado. La
+página lo dice explícitamente, para que no parezca que se esconde algo.
 
-Esa mezcla es deliberada: los sitios en vivo dan prueba verificable en dos
-clics; los casos a detalle dan peso técnico.
+Esa mezcla es deliberada: los sitios dan prueba verificable en dos clics;
+los casos a detalle dan peso técnico.
 
 ---
 
