@@ -13,8 +13,9 @@ No tiene relación con su empleo en 24labs.
 
 **Qué vendemos:** automatización con inteligencia artificial y desarrollo de
 software para empresas. Agentes de IA que atienden por WhatsApp, IA sobre los
-datos del cliente, desarrollo web y móvil, infraestructura, modernización de
-sistemas viejos y soporte mensual.
+datos del cliente, desarrollo web y móvil, kioscos de autoservicio (APK
+Android con impresora, datáfono y facturación SUNAT), infraestructura,
+modernización de sistemas viejos y soporte mensual.
 
 **Posicionamiento:** *"Software e IA que sí llegan a producción."*
 La diferencia frente a la competencia no es hacer demos bonitas, es dejar
@@ -118,6 +119,30 @@ Se dice así:
 Voz en **plural** ("instalamos", "lo mantenemos") en todo el recorrido comercial.
 La única excepción deliberada es el cierre de *Nosotros*: *"No soy una agencia
 gigante: soy yo, trabajando directo contigo."* Ese contraste es lo que vende.
+
+---
+
+## 4b. Portafolio: qué mostramos
+
+`/casos` tiene dos bloques, y la diferencia importa al vender.
+
+**Sitios en vivo** — cuatro webs en producción que el cliente puede abrir
+ahora mismo desde su celular, con captura, descripción y stack:
+
+| Sitio | Rubro |
+|---|---|
+| [TwentyFour Digital](https://twentyfourdigital.store/) | Suscripciones a streaming y software |
+| [General Supplier](https://general-supplier.com/) | Industrial · catálogo técnico |
+| [Yacumama Eco Lodge](https://yacumamaecolodge.com/) | Turismo · reservas |
+| [Card Centro Perú](https://cardcentroperu.com/) | Salud · servicios |
+
+**Casos a detalle** — minería, retail y DevOps. Son los proyectos más
+grandes, pero por confidencialidad no se muestran pantallas: va el problema,
+qué hicimos y el resultado. La página lo dice explícitamente, para que no
+parezca que se esconde algo.
+
+Esa mezcla es deliberada: los sitios en vivo dan prueba verificable en dos
+clics; los casos a detalle dan peso técnico.
 
 ---
 
