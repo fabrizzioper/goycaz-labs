@@ -2,13 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Marks from '../components/Marks.astro';
-import { cases } from '../lib/content';
+import { cases, liveSites } from '../lib/content';
 ---
 <Layout
   active="/casos"
   title="Casos — GoyCaz Labs"
   titleEn="Work — GoyCaz Labs"
-  description="Trabajo real en producción: IA sobre 20 años de datos de una minera, kioscos de autoservicio con facturación, e infraestructura estable con 99.9% de uptime.">
+  description="Sitios y sistemas en produccion que puedes abrir ahora mismo, mas casos de IA sobre datos, kioscos con facturacion e infraestructura con 99.9% de uptime.">
 
   <section class="page-hero">
     <div class="hero-bg" aria-hidden="true">
@@ -18,12 +18,44 @@ import { cases } from '../lib/content';
     <div class="wrap hero-inner stagger">
       <p class="label" data-en="Our work">Nuestro trabajo</p>
       <h1><span data-en="Work in production, not ">Trabajo en producción, no </span><span class="ac" data-en="slideware">diapositivas</span><span data-en=".">.</span></h1>
-      <p class="lead" data-en="Problem, what we did, and the outcome. Real systems running with real users, real data and real load.">El problema, qué hicimos y el resultado. Sistemas reales corriendo con usuarios, datos y carga reales.</p>
+      <p class="lead" data-en="Sites you can open right now, plus the systems behind them. Real projects with real users, real data and real load.">Sitios que puedes abrir ahora mismo, y los sistemas que hay detrás. Proyectos reales con usuarios, datos y carga reales.</p>
     </div>
   </section>
 
+  <!-- Sitios en produccion: visitables -->
   <section class="section no-line" style="padding-top:0">
     <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label" data-en="Live sites">Sitios en vivo</p>
+        <h2 data-en="Open them. They are in production right now.">Ábrelos. Están en producción ahora mismo.</h2>
+      </div>
+      <div class="site-grid stagger">
+        {liveSites.map((s, i) => (
+          <a class="site-card" href={s.url} target="_blank" rel="noopener">
+            <div class="site-shot">
+              <img src={s.shot} alt={s.name} width="960" height="600" loading={i < 2 ? "eager" : "lazy"} decoding="async" />
+            </div>
+            <div class="site-body">
+              <span class="badge" data-en={s.tagEn}>{s.tagEs}</span>
+              <h3>{s.name}</h3>
+              <p data-en={s.descEn}>{s.descEs}</p>
+              <div class="site-stack">{s.stack.map((t) => <span>{t}</span>)}</div>
+              <span class="site-link" data-en="Visit the site">Visitar el sitio</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Casos con detalle tecnico -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="label" data-en="Case studies">Casos a detalle</p>
+        <h2 data-en="Systems behind the scenes.">Sistemas que no se ven, pero sostienen el negocio.</h2>
+        <p class="lead" data-en="Under NDA we cannot show screens, so here is the problem, what we did and the outcome.">Por acuerdos de confidencialidad no podemos mostrar pantallas, así que va el problema, qué hicimos y el resultado.</p>
+      </div>
       {cases.map((c) => (
         <div class="marks reveal">
           <Marks />

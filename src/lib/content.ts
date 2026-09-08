@@ -47,6 +47,15 @@ export const services: Service[] = [
     price: 'desde US$ 500',
   },
   {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="14" rx="2"/><path d="M9 20h6M12 16v4M8 6h8M8 10h5"/></svg>',
+    es: 'Kioscos de autoservicio (APK)', en: 'Self-service kiosks (APK)',
+    descEs: 'La app Android que corre en tu kiosco: el cliente pide y paga solo, imprime su comprobante y tú no pones un cajero.',
+    descEn: 'The Android app that runs on your kiosk: customers order and pay by themselves, print their receipt, and you free up a cashier.',
+    bulletsEs: ['APK a medida en modo kiosco', 'Impresora, lector y datáfono integrados', 'Facturación electrónica SUNAT'],
+    bulletsEn: ['Custom APK in kiosk mode', 'Printer, scanner & card reader integrated', 'SUNAT electronic invoicing'],
+    price: 'desde US$ 500',
+  },
+  {
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>',
     es: 'Infraestructura & DevOps', en: 'Infrastructure & DevOps',
     descEs: 'De “manual y frágil” a estable, reproducible y documentado. Alta disponibilidad, nube u on-premise.',
@@ -81,6 +90,55 @@ export const services: Service[] = [
     bulletsEs: ['Actualizaciones y mejoras', 'Respuesta a incidentes con SLA', 'Reportes mensuales'],
     bulletsEn: ['Updates & improvements', 'Incident response with SLA', 'Monthly reports'],
     price: 'a medida',
+  },
+];
+
+/** Sitios en producción que el prospecto puede abrir y comprobar ahora mismo. */
+export interface LiveSite {
+  name: string;
+  url: string;
+  shot: string;              // captura en /public/casos
+  tagEs: string; tagEn: string;
+  descEs: string; descEn: string;
+  stack: string[];
+}
+
+export const liveSites: LiveSite[] = [
+  {
+    name: 'TwentyFour Digital',
+    url: 'https://twentyfourdigital.store/',
+    shot: '/casos/twentyfour.jpg',
+    tagEs: 'E-commerce · Suscripciones', tagEn: 'E-commerce · Subscriptions',
+    descEs: 'Tienda de suscripciones a streaming y software: catálogo con buscador, precios en soles, portal de clientes y panel de administración.',
+    descEn: 'Streaming and software subscription store: searchable catalog, local pricing, customer portal and admin panel.',
+    stack: ['React', 'TypeScript', 'PHP', 'SQL Server', 'Azure'],
+  },
+  {
+    name: 'General Supplier',
+    url: 'https://general-supplier.com/',
+    shot: '/casos/general-supplier.jpg',
+    tagEs: 'Industrial · Catálogo', tagEn: 'Industrial · Catalog',
+    descEs: 'Sitio corporativo multilingüe para un distribuidor de sellado mecánico, con catálogo técnico de productos.',
+    descEn: 'Multilingual corporate site for a mechanical sealing distributor, with a technical product catalog.',
+    stack: ['Astro', 'Multilingüe', 'SEO'],
+  },
+  {
+    name: 'Yacumama Eco Lodge',
+    url: 'https://yacumamaecolodge.com/',
+    shot: '/casos/yacumama.jpg',
+    tagEs: 'Turismo · Reservas', tagEn: 'Tourism · Bookings',
+    descEs: 'Web de un eco lodge amazónico: paquetes, galería y contacto directo para reservar.',
+    descEn: 'Website for an Amazon eco lodge: packages, gallery and direct contact to book.',
+    stack: ['Web', 'Responsive', 'SEO'],
+  },
+  {
+    name: 'Card Centro Perú',
+    url: 'https://cardcentroperu.com/',
+    shot: '/casos/cardcentro.jpg',
+    tagEs: 'Salud · Servicios', tagEn: 'Health · Services',
+    descEs: 'Sitio institucional de un centro de salud cardiológica, con servicios y canal de contacto.',
+    descEn: 'Institutional site for a cardiology health center, with services and a contact channel.',
+    stack: ['Web', 'Responsive', 'Formularios'],
   },
 ];
 
