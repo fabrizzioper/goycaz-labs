@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalDoc from '../components/LegalDoc.astro';
+import { terms } from '../lib/legal';
+---
+<Layout
+  title={terms.titleEs}
+  titleEn={terms.titleEn}
+  description={terms.description}>
+  <LegalDoc doc={terms} />
+</Layout>

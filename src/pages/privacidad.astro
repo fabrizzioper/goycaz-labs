@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalDoc from '../components/LegalDoc.astro';
+import { privacy } from '../lib/legal';
+---
+<Layout
+  title={privacy.titleEs}
+  titleEn={privacy.titleEn}
+  description={privacy.description}>
+  <LegalDoc doc={privacy} />
+</Layout>

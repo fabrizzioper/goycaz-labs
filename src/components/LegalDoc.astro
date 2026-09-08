@@ -1,0 +1,103 @@
+---
+// Plantilla de los documentos legales (privacidad, eliminación de datos,
+// términos). Recibe el documento de src/lib/legal.ts y lo pinta con las
+// piezas del sistema de diseño: page-hero con aurora, índice pegajoso y la
+// tarjeta de bordes discontinuos con marcas "+" que se usa en toda la web.
+import Marks from './Marks.astro';
+import { url, EMAIL, WHATSAPP, WHATSAPP_PRETTY } from '../lib/site';
+import { icons } from '../lib/icons';
+import {
+  LEGAL_UPDATED_ES, LEGAL_UPDATED_EN,
+  LEGAL_OWNER, LEGAL_CITY_ES, LEGAL_CITY_EN,
+  type LegalDoc,
+} from '../lib/legal';
+
+interface Props { doc: LegalDoc }
+const { doc } = Astro.props;
+
+const num = (i: number) => String(i + 1).padStart(2, '0');
+const wa = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola GoyCaz Labs, tengo una consulta sobre mis datos personales')}`;
+---
+<section class="page-hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="aurora" data-aurora data-speed="0.4" data-blend="0.6" data-amplitude="1"></div>
+    <div class="fade"></div>
+  </div>
+  <div class="wrap hero-inner stagger">
+    <p class="label" data-en={doc.labelEn}>{doc.labelEs}</p>
+    <h1 data-en={doc.h1En} set:html={doc.h1Es}></h1>
+    <p class="lead" data-en={doc.leadEn}>{doc.leadEs}</p>
+    <p class="legal-updated">
+      <span class="badge" data-en={`Last updated · ${LEGAL_UPDATED_EN}`}>Última actualización · {LEGAL_UPDATED_ES}</span>
+    </p>
+  </div>
+</section>
+
+<section class="section no-line" style="padding-top:0">
+  <div class="wrap legal-grid">
+    <aside class="legal-index stagger">
+      <p class="label" data-en="Contents">Contenido</p>
+      <ol>
+        {doc.sections.map((s, i) => (
+          <li>
+            <a href={`#${s.id}`}>
+              <span class="n mono">{num(i)}</span>
+              <span data-en={s.en}>{s.es}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+      <a href={wa} target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+        <span set:html={icons.whatsapp}></span>
+        <span data-en="Ask about your data">Consulta sobre tus datos</span>
+      </a>
+    </aside>
+
+    <div class="legal-body">
+      <div class="marks reveal">
+        <Marks />
+        <div class="legal">
+          {doc.sections.map((s, i) => (
+            <section id={s.id}>
+              <p class="n">{num(i)}</p>
+              <h2 data-en={s.en}>{s.es}</h2>
+              {s.bodyEs.map((p, k) => (
+                <p data-en={s.bodyEn[k]} set:html={p}></p>
+              ))}
+              {s.listEs && (
+                <ul>
+                  {s.listEs.map((li, k) => (
+                    <li data-en={(s.listEn ?? [])[k]} set:html={li}></li>
+                  ))}
+                </ul>
+              )}
+              {s.noteEs && <div class="note" data-en={s.noteEn} set:html={s.noteEs}></div>}
+              {s.linkHref && (
+                <a class="legal-link" href={url(s.linkHref)}>
+                  <span data-en={s.linkEn}>{s.linkEs}</span>
+                  <span set:html={icons.arrowRight}></span>
+                </a>
+              )}
+            </section>
+          ))}
+        </div>
+      </div>
+
+      <div class="legal-contact dashed reveal">
+        <p class="label" data-en="Data controller">Responsable</p>
+        <p class="who">GoyCaz Labs — {LEGAL_OWNER}</p>
+        <p class="where" data-en={LEGAL_CITY_EN}>{LEGAL_CITY_ES}</p>
+        <div class="legal-contact-links">
+          <a href={`mailto:${EMAIL}`}>
+            <span class="ico sm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+            <span>{EMAIL}</span>
+          </a>
+          <a href={wa} target="_blank" rel="noopener noreferrer">
+            <span class="ico sm" set:html={icons.whatsapp}></span>
+            <span>{WHATSAPP_PRETTY}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

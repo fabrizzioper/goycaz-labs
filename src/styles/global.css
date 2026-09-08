@@ -510,6 +510,42 @@ body.locked{overflow:hidden}
 .faq details[open] summary .pm svg{transform:rotate(45deg)}
 .faq details p{padding:0 48px 24px 0;font-size:14px;line-height:1.625;color:var(--muted-foreground)}
 
+/* ── Páginas legales (privacidad, eliminación de datos, términos) ──────── */
+.legal-updated{margin-top:24px}
+.legal-grid{display:grid;grid-template-columns:1fr;gap:48px}
+.legal-index .label{margin-bottom:16px}
+.legal-index ol{display:flex;flex-direction:column}
+.legal-index li + li{border-top:1px dashed rgb(var(--border-rgb)/.5)}
+.legal-index a{display:flex;gap:12px;padding:10px 0;font-size:14px;line-height:1.4;color:var(--muted-foreground);transition:color .15s}
+.legal-index a:hover{color:var(--foreground)}
+.legal-index .n{flex-shrink:0;font-size:11px;letter-spacing:.1em;color:rgb(var(--mutedfg-rgb)/.7);padding-top:2px}
+.legal-index .btn{margin-top:24px}
+
+.legal{padding:0 20px;border-radius:var(--r-xl);border:1px dashed rgb(var(--border-rgb)/.6);background:rgb(var(--card-rgb)/.3)}
+.legal section{padding:28px 0;scroll-margin-top:96px}
+.legal section + section{border-top:1px dashed rgb(var(--border-rgb)/.5)}
+.legal .n{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.18em;color:var(--muted-foreground)}
+.legal h2{margin-top:8px;font-size:20px;line-height:1.25;font-weight:500;letter-spacing:-.025em;text-wrap:balance}
+.legal p{margin-top:14px;font-size:14px;line-height:1.7;color:var(--muted-foreground)}
+.legal strong{font-weight:500;color:var(--foreground)}
+.legal a{color:var(--foreground);text-decoration:underline;text-decoration-color:rgb(var(--fg-rgb)/.25);text-underline-offset:3px;transition:text-decoration-color .15s}
+.legal a:hover{text-decoration-color:var(--foreground)}
+.legal .mono{font-size:.92em;color:rgb(var(--fg-rgb)/.8)}
+.legal ul{margin-top:16px;display:flex;flex-direction:column;gap:12px}
+.legal li{position:relative;padding-left:22px;font-size:14px;line-height:1.7;color:var(--muted-foreground)}
+.legal li::before{content:"";position:absolute;left:2px;top:12px;width:8px;height:1px;background:rgb(var(--mutedfg-rgb)/.55)}
+.legal .note{margin-top:18px;padding:14px 16px;border-radius:var(--r-lg);border:1px dashed rgb(var(--border-rgb)/.9);background:rgb(var(--muted-rgb)/.4);font-size:13px;line-height:1.65;color:var(--muted-foreground)}
+.legal .legal-link{margin-top:18px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:var(--foreground);text-decoration:none}
+.legal .legal-link svg{width:16px;height:16px;transition:transform .2s}
+.legal .legal-link:hover svg{transform:translateX(3px)}
+
+.legal-contact{margin-top:24px;padding:24px}
+.legal-contact .who{margin-top:12px;font-size:16px;font-weight:500}
+.legal-contact .where{margin-top:4px;font-size:14px;color:var(--muted-foreground)}
+.legal-contact-links{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.legal-contact-links a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--r-lg);border:1px solid var(--border);background:var(--card);font-size:14px;font-weight:500;transition:border-color .3s}
+.legal-contact-links a:hover{border-color:rgb(var(--fg-rgb)/.2)}
+
 /* ── Contacto ──────────────────────────────────────────────────────────── */
 .contact{display:grid;grid-template-columns:1fr;gap:48px}
 .contact-list{margin-top:24px;display:flex;flex-direction:column;gap:8px}
@@ -580,7 +616,7 @@ body.locked{overflow:hidden}
 .foot-col a{font-size:14px;color:var(--muted-foreground);transition:color .15s}
 .foot-col a:hover{color:var(--foreground)}
 .foot-bottom{margin-top:40px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:16px;padding:0 8px;font-size:12px;color:var(--muted-foreground)}
-.foot-bottom .links{display:flex;align-items:center;gap:20px}
+.foot-bottom .links{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px}
 .foot-bottom a:hover{color:var(--foreground)}
 
 /* ── Reveal: estado inicial; la animación la hace `motion` (src/scripts/reveal.ts) ── */
@@ -656,6 +692,12 @@ body.locked{overflow:hidden}
   .faq{padding:0 28px}
   .faq summary{padding:24px 0;font-size:18px}
   .faq details p{font-size:16px}
+  .legal{padding:0 28px}
+  .legal section{padding:36px 0}
+  .legal h2{font-size:24px}
+  .legal p,.legal li{font-size:15px}
+  .legal .note{font-size:14px;padding:16px 18px}
+  .legal-contact{padding:32px}
   .cta{padding:176px 0}
   .cta h2{font-size:60px}
   .cta-inner{padding:0 24px}
@@ -695,6 +737,8 @@ body.locked{overflow:hidden}
   .serv:nth-child(n+4){border-top:1px dashed rgb(var(--border-rgb)/.5)!important}
   .faq-grid{grid-template-columns:5fr 7fr;gap:64px;align-items:start}
   .faq-side{position:sticky;top:96px}
+  .legal-grid{grid-template-columns:4fr 8fr;gap:64px;align-items:start}
+  .legal-index{position:sticky;top:96px}
   .cta h2{font-size:72px}
   .show-item{width:42vw}
   .frame{padding:40px}

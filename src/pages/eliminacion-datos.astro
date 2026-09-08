@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LegalDoc from '../components/LegalDoc.astro';
+import { deletion } from '../lib/legal';
+---
+<Layout
+  title={deletion.titleEs}
+  titleEn={deletion.titleEn}
+  description={deletion.description}>
+  <LegalDoc doc={deletion} />
+</Layout>
