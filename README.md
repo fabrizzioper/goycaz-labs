@@ -35,3 +35,5 @@ Automático a **GitHub Pages** en cada `push` a `main`, vía `.github/workflows/
 - **Servicios / casos / precios**: editar `src/lib/content.ts` y `src/pages/precios.astro`.
 - **Dominio propio**: crear `public/CNAME` con el dominio, en `astro.config.mjs` poner
   `site: 'https://tudominio.com'` y `base: '/'`, y configurar el DNS hacia GitHub Pages.
+
+# Deploy automatico: cada push a main despliega solo en Vercel.
