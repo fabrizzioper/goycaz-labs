@@ -1,13 +1,12 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
 
-// SSR sobre Node: el sitio corre como proceso bajo pm2 y se expone por
-// cloudflared, igual que el resto de los proyectos. El adapter 'standalone'
-// levanta su propio servidor HTTP (puerto via env PORT/HOST).
+// Sitio estatico: las 10 paginas son HTML puro, no hay endpoints ni
+// formularios, asi que no hace falta un servidor. Se publica en Vercel
+// (CDN) en vez de correr bajo pm2 detras de cloudflared: asi la web no
+// depende de que una maquina este prendida.
 export default defineConfig({
   site: 'https://goycazlabs.com',
-  output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  output: 'static',
   trailingSlash: 'ignore',
   build: { format: 'directory' },
 });
