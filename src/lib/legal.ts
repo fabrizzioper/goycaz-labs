@@ -368,13 +368,13 @@ export const terms: LegalDoc = {
     },
     {
       id: 'precios',
-      es: 'Los precios que ves', en: 'The prices you see',
+      es: 'Cómo definimos el precio', en: 'How we set the price',
       bodyEs: [
-        'Los montos del sitio se muestran siempre en formato <strong>“desde US$”</strong> y son <strong>referenciales</strong>: el precio final depende del diagnóstico y del alcance real de tu caso.',
+        'En el sitio <strong>no publicamos montos</strong>: el precio depende del diagnóstico y del alcance real de tu caso, y lo definimos contigo en una llamada sin costo.',
         'Nada de lo publicado en la web constituye una oferta cerrada. El precio en firme, con alcance y plazo, va siempre en la propuesta escrita que te enviamos.',
       ],
       bodyEn: [
-        'Amounts on the site are always shown as <strong>“from US$”</strong> and are <strong>indicative</strong>: the final price depends on the diagnosis and the real scope of your case.',
+        'We <strong>do not publish amounts</strong> on the site: the price depends on the diagnosis and the real scope of your case, and we define it with you on a free call.',
         'Nothing published on the site is a binding offer. The firm price, with scope and timeline, always comes in the written proposal we send you.',
       ],
     },
