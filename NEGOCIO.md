@@ -124,16 +124,13 @@ gigante: soy yo, trabajando directo contigo."* Ese contraste es lo que vende.
 
 ## 4b. Portafolio: qué mostramos
 
-Los mismos **siete sitios** aparecen en la home (carrusel) y en `/casos`
+Los mismos **cinco sitios** aparecen en la home (carrusel) y en `/casos`
 (grilla). Salen de una sola lista en el código, así que las dos páginas
 nunca se desincronizan. Todos son webs que el cliente puede abrir desde su
 celular en la reunión:
 
 | Sitio | Rubro |
 |---|---|
-| [Tía Vane](https://tiavane.pe/) | E-commerce · termos |
-| [Invierte AI](https://chatbot.vanels.pe) | IA · finanzas |
-| [Alonso Barber Studio](https://alonsobarberstudio.com/) | Barbería · reservas |
 | [TwentyFour Digital](https://twentyfourdigital.store/) | Suscripciones streaming y software |
 | [General Supplier](https://general-supplier.com/) | Industrial · catálogo técnico |
 | [Yacumama Eco Lodge](https://yacumamaecolodge.com/) | Turismo · reservas |
